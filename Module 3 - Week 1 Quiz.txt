@@ -1,0 +1,37 @@
+1)
+library(data.table)
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06hid.csv"
+destFile <- "C:\\Users\\ittt\\Desktop\\item1.csv"
+
+data <- fread(destFile)
+nrow(data[data$VAL == 24, ])
+
+2)
+
+Tidy data has one variable per column.
+
+3)
+
+install.packages("xlsx")
+
+//download.file(url, f, mode = "wb") write as binary
+
+
+dat <- read.xlsx("C:\\Users\\ittt\\Desktop\\NGAP.xlsx", sheetIndex = 1, colIndex = 7:15, rowIndex = 18:23)
+sum(dat$Zip*dat$Ext,na.rm=T)
+
+4)
+install.packages("XML")
+library(XML)
+
+//remove s in https or use this doc <- xmlTreeParse(sub("s", "", fileURL), useInternal = TRUE)
+fileUrl <- "http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml"
+doc <- xmlTreeParse(fileUrl, useInternal = TRUE)
+rootNode <- xmlRoot(doc)
+zipcodes <- xmlSApply(rootNode, "//zipcode", xmlValue)
+dt <- data.table(zipcode = zipcodes)
+dt[zipcode == "21231", .N]
+
+5)
+
+system.time(DT[,mean(pwgtp15),by=SEX])
