@@ -6,6 +6,10 @@ destFile <- "C:\\Users\\ittt\\Desktop\\item1.csv"
 data <- fread(destFile)
 nrow(data[data$VAL == 24, ])
 
+OR
+
+data[data$VAL == 24, .N]
+
 2)
 
 Tidy data has one variable per column.
